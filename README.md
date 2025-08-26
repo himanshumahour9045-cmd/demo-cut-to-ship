@@ -1,2 +1,6 @@
-# demo-cut-to-ship
-Cut to ship Analysis From April to June 2025 
+streamlit
+pandas
+numpy
+matplotlib
+seaborn
+tabulate
