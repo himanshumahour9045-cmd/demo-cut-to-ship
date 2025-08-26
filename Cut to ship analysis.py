@@ -42,39 +42,6 @@ order_to_cut_unit_wise = round((unit_wise_ship_qty/unit_wise_cut_qty*100),2)
 cut_to_ship_unit_wise = round((unit_wise_ship_qty/unit_wise_cut_qty*100),2)
 
 
-
-# Print Data
-print("_____Describe Shipment Data_____")
-print(tabulate(df.describe(), headers="keys", tablefmt="grid"))
-
-# print("Unit wise Shipped Count :", Unit_Count)
-# print("Unit wise Ship Qty :", Unit_wise_Ship_Qty)
-# print("Month Count :",Month_Count)
-# print("Month wise Ship Qty :", Month_Wise_Ship_Qty)
-# print("Total Shipped Qty", Total_Shipped_Qty)
-# print("Buyer Name :", Buyer_Count)
-# print("Buyer wise Order Qty :",Buyer_Wise_Order_Qty)
-# print("Buyer wise Ship Qty :", Buyer_Wise_Ship_Qty)
-# print("Total Order Qty :",Total_Order_Qty)
-# print("Total Cutting Qty", Total_Cutting_Qty)
-# print("Total Shipped Qty", Total_Shipped_Qty)
-# print("Cut to Ship Ratio :", (f"{cut_to_ship_ratio}%"))
-# print("Order to Ship :",f"{Order_to_Ship_ratio}%")
-# print("Unit wise Order Qty :",unit_wise_order_qty)
-# print("Unit wise Cut Qty :",unit_wise_cut_qty)
-# print("Unit wise Shipped Qty :",unit_wise_ship_qty)
-# print("Unit wise Order to Ship(%) :",(f"{order_to_cut_unit_wise}%"))
-# print("Unit wise Cut to Ship(%) :",(f"{cut_to_ship_unit_wise}%"))
-
-# # Style wise Summary Cut to Ship
-# print("Style wise Summary Cut to Ship")
-# style_analysis = df.groupby(["Month","Unit","Style", "Product"])[["Order Qty", "Cutting Qty", "Shipped Qty"]].sum()
-# # add 2 row for calculate cut and ship ratio
-# style_analysis["Order_to_Ship_ratio"] = ((style_analysis["Shipped Qty"]/style_analysis["Order Qty"])*100).round(2).astype(str) + " %"
-# style_analysis["Cut_to_Ship_Ratio"] = ((style_analysis["Shipped Qty"]/style_analysis["Cutting Qty"])*100).round(2).astype(str) + " %"
-# print("Summary of Cut to Ship for the month Apr-25 to Jun-25\n",style_analysis.to_string())
-
-
 # Web App Deployment
 st.markdown("## **Cut to Ship Analysis :cityscape:**")
 st.markdown("Month - Apr to Jun 25")
@@ -118,3 +85,4 @@ st.dataframe(style_analysis)
 
 st.bar_chart(buyer_analysis.set_index("Buyer")["Shipped Qty"])
 st.bar_chart(style_analysis.set_index("Style")["Shipped Qty"])
+
