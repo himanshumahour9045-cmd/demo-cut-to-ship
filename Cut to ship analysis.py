@@ -83,8 +83,11 @@ st.dataframe(month_analysis)
 st.dataframe(buyer_analysis)
 st.dataframe(style_analysis)
 
+
+st.bar_chart(month_analysis.set_index("Month")[["Order Qty","Shipped Qty"]])
 st.bar_chart(buyer_analysis.set_index("Buyer")["Shipped Qty"])
 st.bar_chart(style_analysis.set_index("Style")["Shipped Qty"])
+
 
 
 
