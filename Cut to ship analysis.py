@@ -1,8 +1,6 @@
 import pandas as pd
-import seaborn as sns
 import streamlit as st
 from tabulate import tabulate
-import seaborn as sns
 
 data_cut_to_ship = {
     "Month" : ["Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Apr 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","Jun 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025","May 2025"],
@@ -115,3 +113,4 @@ st.dataframe(style_analysis)
 
 st.bar_chart(buyer_analysis.set_index("Buyer")["Shipped Qty"])
 st.bar_chart(style_analysis.set_index("Style")["Shipped Qty"])
+
