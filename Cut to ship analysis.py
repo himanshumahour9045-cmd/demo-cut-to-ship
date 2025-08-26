@@ -75,9 +75,9 @@ st.metric("Order to Ship Ratio 🛒 :+1:", f"{Order_to_Ship_ratio}%")
 # Buyer Wise Shipment Analysis
 st.subheader("🛒 Buyer Wise Shipment")
 
-month_analysis = month_data.groupby("Month")["Shipped Qty"].sum().reset_index()
-buyer_analysis = month_data.groupby("Buyer")["Shipped Qty"].sum().reset_index()
-style_analysis = month_data.groupby("Style")["Shipped Qty"].sum().reset_index()
+month_analysis = month_data.groupby("Month")[["Cutting Qty", "Shipped Qty"]].sum().reset_index()
+buyer_analysis = month_data.groupby("Buyer")[["Cutting Qty", "Shipped Qty"]].sum().reset_index()
+style_analysis = month_data.groupby("Style")[["Cutting Qty", "Shipped Qty"]].sum().reset_index()
 
 st.dataframe(month_analysis)
 st.dataframe(buyer_analysis)
@@ -85,4 +85,5 @@ st.dataframe(style_analysis)
 
 st.bar_chart(buyer_analysis.set_index("Buyer")["Shipped Qty"])
 st.bar_chart(style_analysis.set_index("Style")["Shipped Qty"])
+
 
