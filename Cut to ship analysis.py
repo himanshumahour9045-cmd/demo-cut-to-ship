@@ -76,17 +76,22 @@ print(tabulate(df.describe(), headers="keys", tablefmt="grid"))
 
 
 # Web App Deployment
-
 st.markdown("## **Cut to Ship Analysis :cityscape:**")
 st.markdown("Month - Apr to Jun 25")
 
-months = df["Month"].unique()
-selected_month = st.selectbox("Select Month", sorted(months))
+# Dropdown with All option
+months = sorted(df["Month"].unique())
+months.insert(0, "All")
+
+selected_month = st.selectbox("Select Month", months)
 
 # Filtered Data
-month_data = df[df["Month"] == selected_month]
+if selected_month == "All":
+    month_data = df.copy()
+else:
+    month_data = df[df["Month"] == selected_month]
 
-# Summary Metrics (Month-wise)
+# Summary Metrics
 Total_Order_Qty = month_data["Order Qty"].sum()
 Total_Cutting_Qty = month_data["Cutting Qty"].sum()
 Total_Shipped_Qty = month_data["Shipped Qty"].sum()
@@ -101,7 +106,7 @@ st.metric("Cut to Ship Ratio 🛒 :+1:", f"{cut_to_ship_ratio}%")
 st.metric("Order to Ship Ratio 🛒 :+1:", f"{Order_to_Ship_ratio}%")
 
 # Buyer Wise Shipment Analysis
-st.subheader("🛒 Buyer Wise Shipment (Month-wise)")
+st.subheader("🛒 Buyer Wise Shipment")
 
 month_analysis = month_data.groupby("Month")["Shipped Qty"].sum().reset_index()
 buyer_analysis = month_data.groupby("Buyer")["Shipped Qty"].sum().reset_index()
@@ -113,4 +118,3 @@ st.dataframe(style_analysis)
 
 st.bar_chart(buyer_analysis.set_index("Buyer")["Shipped Qty"])
 st.bar_chart(style_analysis.set_index("Style")["Shipped Qty"])
-
